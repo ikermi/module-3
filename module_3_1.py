@@ -99,3 +99,81 @@ if 3 in nums:
     print('The number was found')
 else:
     print('The number was not found')
+
+username = 'jonsnow'
+email = 'jon@snow.com'
+password = 'thenorth'
+#   Compound conditionals
+if (username == 'jonsnow' or email == 'jon@snow.com') and password == 'thenorth':
+  print('Access permitted')
+else:
+  print('Not allowed')
+
+def remove_first_and_last(list_to_clean):
+  _,*content,_ = list_to_clean # Aserisco neededto desctructing lists in py
+  return content
+
+def greetings():
+  print('hello')
+
+print('')
+
+def greeting(*args):
+  print('Hi ' + ' '.join(args))
+
+
+greeting('Kristine', 'M', 'Hudgens')
+greeting('Tiffany', 'Hudgens')
+
+def greeting(**kwargs):
+  print(kwargs)
+
+
+greeting()
+greeting(first = 'Kristine', last = 'Hudgens')
+
+def greeting(**kwargs):
+  if kwargs:
+    print(f"Hi {kwargs['first']} {kwargs['last']}, have a great day!")
+  else:
+    print('Hi Guest!')
+
+
+greeting()
+greeting(first = 'Kristine', last = 'Hudgens')
+
+def greeting(time_of_day, *args, **kwargs):
+  print(f"Hi {' '.join(args)}, I hope that you're having a good {time_of_day}.")
+
+  if kwargs:
+    print('Your tasks for the day are:')
+    for key, val in kwargs.items():
+      print(f'{key} -> {val}')
+
+
+greeting('Morning',
+         'Kristine', 'Hudgens',
+         first = 'Empty dishwasher',
+         second = 'Take pupper out',
+         third = 'math homework')
+
+full_name = lambda first, last: f'{first} {last}'
+
+
+def greeting(name):
+  print(f'Hi there {name}')
+
+
+greeting(full_name('Kristine', 'Hudgens'))
+
+import sys
+sys.path.insert(0, './libs') # This adds libs subfolder to the path to check for libraries
+# import helper 
+
+import requests
+import pprint
+
+r = requests.get('https://api.dailysmarty.com/posts')
+r.json()
+pprint.pprint(r.json()['posts'][0])
+pprint.pprint(r.json()['posts'][0]['url_for_post'])
